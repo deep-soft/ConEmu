@@ -12,7 +12,7 @@ on:
         default: true
         type: boolean
       msbuild_cl_x86_release:
-        default: false
+        default: true
         type: boolean
       msbuild_cl_ARM64_release:
         default: false
@@ -112,7 +112,7 @@ jobs:
         uses: deep-soft/zip-release@v2
         with:
           type: 'zip'
-          filename: 'ConEmu.${{ matrix.build_config }}.${{ matrix.platform_sln }}.${{ env.VERSION }}.zip'
+          filename: 'ConEmu.${{ matrix.platform_sln }}.${{ env.VERSION }}.zip'
           #directory: '_build/vc/_output/product/${{ matrix.build_config }}.${{ matrix.platform_sln }}'
           directory: 'Release'
           exclusions: '*.map *.pdb Tests_Release*.*'
@@ -123,7 +123,7 @@ jobs:
         continue-on-error: true
         uses: deep-soft/upload-artifact@main
         with:
-          name: ConEmu.${{ matrix.build_config }}.${{ matrix.platform_name }}.${{ env.VERSION }}.zip
+          name: ConEmu.${{ matrix.platform_name }}.${{ env.VERSION }}.zip
           #path: _build/vc/_output/product/${{ matrix.build_config }}.${{ matrix.platform_sln }}/ConEmu.${{ matrix.build_config }}.${{ matrix.platform_sln }}.${{ env.VERSION }}.zip
           path: ${{ env.ZIP_RELEASE_ARCHIVE }}
 
