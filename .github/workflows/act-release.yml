@@ -89,6 +89,7 @@ jobs:
         #working-directory: _build/vc
         run: 
              # msbuild -m /property:Configuration=${{ matrix.build_config }} /property:Platform=${{ matrix.platform_sln }} all.sln
+             msbuild src\CE.sln /p:platform="x86" /p:configuration="Release"
              msbuild src\CE.sln /p:platform="x64" /p:configuration="Release"
 
 #       - name: Create zip
@@ -105,9 +106,9 @@ jobs:
           type: 'zip'
           filename: 'ConEmu.${{ matrix.build_config }}.${{ matrix.platform_sln }}.${{ env.VERSION }}.zip'
           #directory: '_build/vc/_output/product/${{ matrix.build_config }}.${{ matrix.platform_sln }}'
-          directory: '.'
-          #exclusions: '*.map *.pdb'
-          #recursive_exclusions: '*.map *.pdb changelog *Bel.lng *Cze.lng *Ger.lng *Hun.lng *Ita.lng *Lit.lng *Pol.lng *Rus.lng *Sky.lng *Spa.lng *Ukr* *Bel.hlf *Cze.hlf *Ger.hlf *Hun.hlf *Ita.hlf *Lit.hlf *Pol.hlf *Rus.hlf *Sky.hlf *Spa.hlf *Ukr*'
+          directory: 'Release'
+          exclusions: '*.map *.pdb Tests_Release*.*'
+          recursive_exclusions: '*.map *.pdb changelog *Bel.lng *Cze.lng *Ger.lng *Hun.lng *Ita.lng *Lit.lng *Pol.lng *Rus.lng *Sky.lng *Spa.lng *Ukr* *Bel.hlf *Cze.hlf *Ger.hlf *Hun.hlf *Ita.hlf *Lit.hlf *Pol.hlf *Rus.hlf *Sky.hlf *Spa.hlf *Ukr*'
           path: '.'
 
       - name: Upload zip
