@@ -20,7 +20,7 @@ on:
 
 env:
   PROG_NAME: "ConEmu"
-  TAG_NAME: "ConEmu-release"
+  TAG_NAME: "ConEmu"
   ConEmu_version: "230724"
 
 jobs:
