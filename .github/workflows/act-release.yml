@@ -54,7 +54,8 @@ jobs:
         shell: bash
         run: |
           echo "Version from WhatsNew-ConEmu.txt"
-          ConEmu_version=$(head -n 30 "Release\ConEmu\WhatsNew-ConEmu.txt" | find "20%BUILD_NO:~0,2%.%BUILD_NO:~2,2%.%BUILD_NO:~4,2%")
+          # ConEmu_version=$(head -n 30 "Release\ConEmu\WhatsNew-ConEmu.txt" | find "20%BUILD_NO:~0,2%.%BUILD_NO:~2,2%.%BUILD_NO:~4,2%")
+          ConEmu_version=$(grep "^20" "Release\ConEmu\WhatsNew-ConEmu.txt" | head -n 1)
           echo "VERSION=$ConEmu_version"
           echo "VERSION=$ConEmu_version" >> $GITHUB_ENV
 
