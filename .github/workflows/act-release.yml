@@ -85,11 +85,16 @@ jobs:
         if: matrix.build_config  == 'Debug'
         run: Add-Content -Path $env:GITHUB_ENV -Value "DEBUG=1"
 
-      - name: Build (cl)
+      - name: Build x86 (cl) 
         #working-directory: _build/vc
         run: 
              # msbuild -m /property:Configuration=${{ matrix.build_config }} /property:Platform=${{ matrix.platform_sln }} all.sln
              msbuild src\CE.sln /p:platform="x86" /p:configuration="Release"
+
+      - name: Build x64 (cl) 
+        #working-directory: _build/vc
+        run: 
+             # msbuild -m /property:Configuration=${{ matrix.build_config }} /property:Platform=${{ matrix.platform_sln }} all.sln
              msbuild src\CE.sln /p:platform="x64" /p:configuration="Release"
 
 #       - name: Create zip
