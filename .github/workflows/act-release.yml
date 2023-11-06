@@ -85,6 +85,13 @@ jobs:
         if: matrix.build_config  == 'Debug'
         run: Add-Content -Path $env:GITHUB_ENV -Value "DEBUG=1"
 
+      - name: Build Win32 (cl) 
+        continue-on-error: true
+        #working-directory: _build/vc
+        run: 
+             # msbuild -m /property:Configuration=${{ matrix.build_config }} /property:Platform=${{ matrix.platform_sln }} all.sln
+             msbuild src\CE.sln /p:platform="Win32" /p:configuration="Release"
+
       - name: Build x64 (cl) 
         #working-directory: _build/vc
         run: 
