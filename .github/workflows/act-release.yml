@@ -77,7 +77,7 @@ jobs:
           arch: ${{ matrix.arch }}
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.0
+        uses: deep-soft/setup-msbuild@v1
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
